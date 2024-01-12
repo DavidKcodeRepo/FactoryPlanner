@@ -45,7 +45,7 @@
 			RecipesGridView.Name = "RecipesGridView";
 			RecipesGridView.RowHeadersWidth = 51;
 			RecipesGridView.RowTemplate.Height = 29;
-			RecipesGridView.Size = new Size(707, 607);
+			RecipesGridView.Size = new Size(707, 587);
 			RecipesGridView.TabIndex = 0;
 			// 
 			// UserSelectGridView
@@ -55,17 +55,17 @@
 			UserSelectGridView.Name = "UserSelectGridView";
 			UserSelectGridView.RowHeadersWidth = 51;
 			UserSelectGridView.RowTemplate.Height = 29;
-			UserSelectGridView.Size = new Size(431, 607);
+			UserSelectGridView.Size = new Size(431, 587);
 			UserSelectGridView.TabIndex = 1;
 			// 
 			// ResultsGridView
 			// 
 			ResultsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			ResultsGridView.Location = new Point(540, 670);
+			ResultsGridView.Location = new Point(540, 641);
 			ResultsGridView.Name = "ResultsGridView";
 			ResultsGridView.RowHeadersWidth = 51;
 			ResultsGridView.RowTemplate.Height = 29;
-			ResultsGridView.Size = new Size(707, 124);
+			ResultsGridView.Size = new Size(707, 153);
 			ResultsGridView.TabIndex = 2;
 			// 
 			// ChkBoxShowAllRecipes
@@ -87,7 +87,7 @@
 			ComboBoxMachine.Size = new Size(151, 28);
 			ComboBoxMachine.TabIndex = 4;
 			// 
-			// FactoryPlanner
+			// FactoryView
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -97,7 +97,7 @@
 			Controls.Add(ResultsGridView);
 			Controls.Add(UserSelectGridView);
 			Controls.Add(RecipesGridView);
-			Name = "FactoryPlanner";
+			Name = "FactoryView";
 			Text = "Factory Planner";
 			((System.ComponentModel.ISupportInitialize)RecipesGridView).EndInit();
 			((System.ComponentModel.ISupportInitialize)UserSelectGridView).EndInit();

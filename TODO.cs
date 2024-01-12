@@ -23,7 +23,7 @@ BUGS
 		-> in non zero ingredients from recipe table
 
 	results and recipes dataframe should scroll lock - FIXED
-	clicking on either scroll bar crashes the app - TODO
+	clicking on either scroll bar crashes the app - FIXED
 
 FEATURES
 	option to calculate lowest common multiple?

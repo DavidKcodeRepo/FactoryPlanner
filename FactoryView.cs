@@ -36,12 +36,26 @@ public partial class FactoryView : Form
 		RecipesGridView.CellFormatting += FormatNonZero;
 		ResultsGridView.CellFormatting += FormatNonZero;
 		UserSelectGridView.CellFormatting += FormatNonZero;
-		RecipesGridView.Scroll += RecipesGridView_Scroll;
-		UserSelectGridView.Scroll += UserSelectGridView_Scroll;
+		RecipesGridView.Scroll += RecipesGridView_VertScroll;
+		UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
+		RecipesGridView.Scroll += RecipesGridView_HorzScroll;
+		ResultsGridView.Scroll += ResultsGridView_HorzScroll;
 
 
 		UserSelectGridView.DataSource = viewModel.UserSelections;
 		ResultsGridView.DataSource = viewModel.ResultsTable;
+	}
+
+	private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
+	{
+		RecipesGridView.FirstDisplayedScrollingColumnIndex =
+			ResultsGridView.FirstDisplayedScrollingColumnIndex;
+	}
+
+	private void RecipesGridView_HorzScroll(object? sender, ScrollEventArgs e)
+	{
+		ResultsGridView.FirstDisplayedScrollingColumnIndex =
+			RecipesGridView.FirstDisplayedScrollingColumnIndex;
 	}
 
 	private void ResetRows(object sender, EventArgs e)
@@ -74,11 +88,14 @@ public partial class FactoryView : Form
 		//update hidden columns
 		for (int i = 0; i < viewModel.RecipeTable.Columns.Count; i++)
 		{
-			double result = Convert.ToDouble(viewModel.ResultsTable.Rows[0][i]);
+			double check1 = Convert.ToDouble(viewModel.ResultsTable.Rows[0][i]);
+			double check2 = Convert.ToDouble(viewModel.ResultsTable.Rows[1][i]);
+			double check3 = Convert.ToDouble(viewModel.ResultsTable.Rows[2][i]);
+
 			DataGridViewColumn resColV = ResultsGridView.Columns[i];
 			DataGridViewColumn recpColV = RecipesGridView.Columns[i];
 
-			if (result == 0)
+			if (check1 == 0 && check2 == 0 && check3 == 0)
 			{
 				resColV.Visible = false;
 				recpColV.Visible = false;
@@ -194,13 +211,13 @@ public partial class FactoryView : Form
 		viewModel.UpdateResults();
 	}
 
-	private void RecipesGridView_Scroll(object sender, ScrollEventArgs e)
+	private void RecipesGridView_VertScroll(object sender, ScrollEventArgs e)
 	{
 		UserSelectGridView.FirstDisplayedScrollingRowIndex =
 			RecipesGridView.FirstDisplayedScrollingRowIndex;
 	}
 
-	private void UserSelectGridView_Scroll(object sender, ScrollEventArgs e)
+	private void UserSelectGridView_VertScroll(object sender, ScrollEventArgs e)
 	{
 		RecipesGridView.FirstDisplayedScrollingRowIndex =
 			UserSelectGridView.FirstDisplayedScrollingRowIndex;
@@ -265,13 +282,20 @@ public class MainViewModel
 
 		//Intialise the ResultsTable
 		DataRow newRow = ResultsTable.NewRow();
+		DataRow twoRow = ResultsTable.NewRow();
+		DataRow threeRow = ResultsTable.NewRow();
+
 
 		// Set values in the DataRow from the array
 		for (int i = 0; i < IngredientCount; i++)
 		{
 			newRow[i] = 0;
+			twoRow[i] = 0;
+			threeRow[i] = 0;
 		}
 		ResultsTable.Rows.Add(newRow);
+		ResultsTable.Rows.Add(twoRow);
+		ResultsTable.Rows.Add(threeRow);
 		return;
 	}
 
@@ -279,17 +303,30 @@ public class MainViewModel
 	{
 		for (int i = 2; i < RecipeTable.Columns.Count; i++)
 		{
-			double result = 0;
+			double resultPositiveTotal = 0;
+			double resultNegativeTotal = 0;
+			double resultBalance = 0;
+
 			for (int j = 0; j < RecipeTable.Rows.Count; j++)
 			{
-				double firstNumber = Convert.ToDouble(UserSelections.Rows[j][0]);
-				double secondNumber = 0;
+				double countThisRecipe = Convert.ToDouble(UserSelections.Rows[j][0]);
+				double recipeIOValue = 0;
 				if (!string.IsNullOrEmpty(Convert.ToString(RecipeTable.Rows[j][i])))
 				{
-					secondNumber = Convert.ToDouble(RecipeTable.Rows[j][i]);
+					recipeIOValue = Convert.ToDouble(RecipeTable.Rows[j][i]);
+					if (recipeIOValue > 0)
+					{
+						resultPositiveTotal += countThisRecipe * recipeIOValue;
+					}
+					if (recipeIOValue < 0)
+					{
+						resultNegativeTotal += countThisRecipe * recipeIOValue;
+					}
 				}
-				result += firstNumber * secondNumber;
-				ResultsTable.Rows[0][i] = result;
+				resultBalance += countThisRecipe * recipeIOValue;
+				ResultsTable.Rows[0][i] = resultNegativeTotal;
+				ResultsTable.Rows[1][i] = resultPositiveTotal;
+				ResultsTable.Rows[2][i] = resultBalance;
 			}
 		}
 	}
