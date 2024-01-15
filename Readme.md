@@ -36,13 +36,15 @@ A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balan
 B-->D((Final Product))
 ```
 
-## Credits 
+## Credits & Acknowledgements
 
-I did not write the recipe tables or other ideas utilised in this app.  
+I did not write the recipe tables or gameplay  ideas utilised in this app.  Credit for these excellent ideas belongs to Coffee 
+
+ 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Njg4NjE5NzMsMjAyMjk4MzExNCwtND
-M1MjA1NTAxLDEwMzY2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5
-NjgxXX0=
+eyJoaXN0b3J5IjpbLTM1NjQ1MjYxOCwyMDIyOTgzMTE0LC00Mz
+UyMDU1MDEsMTAzNjYyNjcyMiwtNjIwMjE2Nzk1LC0zMzM4Njk2
+ODFdfQ==
 -->
