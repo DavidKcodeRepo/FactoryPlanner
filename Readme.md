@@ -32,7 +32,7 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 The general use of this is imagined to be iterative like this.
 ```mermaid
 graph LR
-A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))--User Not happy --->B
+A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))--User not happy --->B
 C-- User is happy--->D((Final Product))
 ```
 
@@ -50,7 +50,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyOTEwMjkyOCwtMjc3NDQ1ODAsLTEyMj
+eyJoaXN0b3J5IjpbLTU5MDUwMjAwMCwtMjc3NDQ1ODAsLTEyMj
 UyMzM2NCw1MTAyMzc3NjYsMjAyMjk4MzExNCwtNDM1MjA1NTAx
 LDEwMzY2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
 -->
