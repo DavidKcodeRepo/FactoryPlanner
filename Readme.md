@@ -44,13 +44,12 @@ Credit for these excellent ideas belongs to Coffee Stain and KYR.ium Mods.
 
 Official K-Mods discord: [KMods Discord](https://discord.gg/JsJ9XXWS7Q)
 
-Official Satisfactory discord: Satisfactory Discord
-
+Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invite/satisfactory)
  
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwMTY5MDIzOCwyMDIyOTgzMTE0LC00Mz
+eyJoaXN0b3J5IjpbMjA5NDAyMzYzMiwyMDIyOTgzMTE0LC00Mz
 UyMDU1MDEsMTAzNjYyNjcyMiwtNjIwMjE2Nzk1LC0zMzM4Njk2
 ODFdfQ==
 -->
