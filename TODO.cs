@@ -14,16 +14,16 @@ USER STORY
 BUGS
 	clear selections reset button
 	if machine is taken off machine to all the the sheet should reset
-	chemical reactior is showing nothing - FIXED
-	fluid conditioner is showing nothing - FIXED
-	orewasher entires are empty on selecting machine - FIXED
+	/ chemical reactior is showing nothing - FIXED
+	/ fluid conditioner is showing nothing - FIXED
+	/ orewasher entires are empty on selecting machine - FIXED
 	Why is unticking "show all" looping several events and causing multiple view refreshes?
 	selecting a machine should limit the ingredient columns to only ingredients
 		-> that provide 
 		-> in non zero ingredients from recipe table
 
-	results and recipes dataframe should scroll lock - FIXED
-	clicking on either scroll bar crashes the app - FIXED
+	/ results and recipes dataframe should scroll lock - FIXED
+	/ clicking on either scroll bar crashes the app - FIXED
 
 FEATURES
 	option to calculate lowest common multiple?

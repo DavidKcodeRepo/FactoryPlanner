@@ -24,9 +24,17 @@ public partial class FactoryView : Form
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{
+
 		// Set up the DataGridView
 		RecipesGridView.AutoGenerateColumns = true; // Allow auto-generation of columns
 		RecipesGridView.DataSource = viewModel.RecipeTable;
+		RecipesGridView.ReadOnly = true;
+
+		foreach(DataGridViewColumn col in RecipesGridView.Columns)
+		{
+			col.Width = 50;
+		}
+
 		ComboBoxMachine.DataSource = Enum.GetValues(typeof(Machines));
 		ComboBoxMachine.SelectedValueChanged += ResetRows;
 		UserSelectGridView.CellValueChanged += UpdateCalculation;
@@ -44,6 +52,12 @@ public partial class FactoryView : Form
 
 		UserSelectGridView.DataSource = viewModel.UserSelections;
 		ResultsGridView.DataSource = viewModel.ResultsTable;
+		foreach (DataGridViewColumn col in ResultsGridView.Columns)
+		{
+			col.Width = 50;
+		}
+		ResultsGridView.ReadOnly = true;
+
 	}
 
 	private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
@@ -244,11 +258,14 @@ public class MainViewModel
 		RecipeTable = new DataTable();
 		UserSelections = new DataTable();
 
-		List<string> Recipes = GlobalConfig.TestRecipesFile
-			.FullFilePath()
+		string currentDirectory = Environment.CurrentDirectory;
+
+		string Recipes = GlobalConfig.TestRecipesFile;
+
+		List<string> Recipes2 = Recipes.FullFilePath()
 			.LoadFile();
 
-		string Headers = Recipes[0];
+		string Headers = Recipes2[0];
 		List<string> ColHeaders = Headers.Split(",").ToList();
 
 
@@ -258,17 +275,17 @@ public class MainViewModel
 			ResultsTable.Columns.Add(ColHeaders[i]);
 		}
 
-		Recipes.RemoveAt(0);
+		Recipes2.RemoveAt(0);
 
 		//Initialise the UserSelections
-		string UserSelectionsColText = "Selections";
+		string UserSelectionsColText = "User \nSelections";
 		UserSelections.Columns.Add(UserSelectionsColText);
 		UserSelectionsColText = "Recipe";
 		UserSelections.Columns.Add(UserSelectionsColText);
 		UserSelectionsColText = "Machine";
 		UserSelections.Columns.Add(UserSelectionsColText);
 
-		foreach (var recipe in Recipes)
+		foreach (var recipe in Recipes2)
 		{
 			string[] inputRowData = recipe.Split(",");
 			int[] zeros = { 0 };
@@ -335,8 +352,6 @@ public static class FileIO
 {
 	//split headers
 
-
-
 	public static string FullFilePath(this string fileName)
 	{
 		return $"{ConfigurationManager.AppSettings["filePath"]}\\{fileName}";
@@ -354,6 +369,5 @@ public static class FileIO
 
 public static class GlobalConfig
 {
-	public const string IngredientsFile = "Ingredients.csv";
-	public const string TestRecipesFile = "TestRecipes2.csv";
+	public const string TestRecipesFile = "RecipeList.csv";
 }
