@@ -30,6 +30,8 @@ public partial class FactoryView : Form
 		RecipesGridView.DataSource = viewModel.RecipeTable;
 		RecipesGridView.ReadOnly = true;
 		RecipesGridView.RowHeadersVisible = false;
+		RecipesGridView.ScrollBars = ScrollBars.Vertical;
+
 
 		foreach (DataGridViewColumn col in RecipesGridView.Columns)
 		{
@@ -54,6 +56,8 @@ public partial class FactoryView : Form
 		UserSelectGridView.DataSource = viewModel.UserSelections;
 		UserSelectGridView.Columns[0].Width = 55;
 		UserSelectGridView.RowHeadersVisible = false;
+		UserSelectGridView.ScrollBars = ScrollBars.Vertical;
+
 		ResultsGridView.DataSource = viewModel.ResultsTable;
 
 		foreach (DataGridViewColumn col in ResultsGridView.Columns)
@@ -62,6 +66,7 @@ public partial class FactoryView : Form
 		}
 		ResultsGridView.RowHeadersVisible = false;
 		ResultsGridView.ReadOnly = true;
+		ResultsGridView.ScrollBars = ScrollBars.None;
 
 	}
 
@@ -74,7 +79,7 @@ public partial class FactoryView : Form
 	private void RecipesGridView_HorzScroll(object? sender, ScrollEventArgs e)
 	{
 		ResultsGridView.FirstDisplayedScrollingColumnIndex =
-			RecipesGridView.FirstDisplayedScrollingColumnIndex;
+	RecipesGridView.FirstDisplayedScrollingColumnIndex;
 	}
 
 	private void ResetRows(object sender, EventArgs e)
@@ -240,6 +245,11 @@ public partial class FactoryView : Form
 	{
 		RecipesGridView.FirstDisplayedScrollingRowIndex =
 			UserSelectGridView.FirstDisplayedScrollingRowIndex;
+	}
+
+	private void textBox1_TextChanged(object sender, EventArgs e)
+	{
+
 	}
 }
 
