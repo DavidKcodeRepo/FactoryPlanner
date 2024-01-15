@@ -30,12 +30,10 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 
 ```mermaid
 graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
+A[Load Project] -- Link text --> B((Lookup product ))
+B --> D((Make Selection))
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUzNjg0OTAwLC0zMzM4Njk2ODFdfQ==
+eyJoaXN0b3J5IjpbLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
 -->
