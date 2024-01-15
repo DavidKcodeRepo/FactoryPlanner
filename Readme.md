@@ -24,7 +24,8 @@ This is a conceptually simple problem; but the number of recipes, combinations o
  - The recipe table, and headings for user
    selections  results are loaded upon startup from a csv file
    configured in the app.config file. 
- - This application was authored from the C# winforms application template in visual studio using only my own knowledge & ability to research documentation; this is my own work and not a reskin of another online tutorial.
+ - This application was authored from the C# winforms application template in visual studio using only my own knowledge & ability to research documentation; this is my own work and not a reskin of another online tutorial. 
+ - It's essentially a selfish project because I wanted this thing to exist for my own amusement.
 
 ## Getting started
 
@@ -37,6 +38,6 @@ B-->D((Final Product))
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzNTIwNTUwMSwxMDM2NjI2NzIyLC02Mj
-AyMTY3OTUsLTMzMzg2OTY4MV19
+eyJoaXN0b3J5IjpbMjAyMjk4MzExNCwtNDM1MjA1NTAxLDEwMz
+Y2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
 -->
