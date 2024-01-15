@@ -41,11 +41,11 @@
 			// RecipesGridView
 			// 
 			RecipesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			RecipesGridView.Location = new Point(540, 29);
+			RecipesGridView.Location = new Point(463, 29);
 			RecipesGridView.Name = "RecipesGridView";
 			RecipesGridView.RowHeadersWidth = 51;
 			RecipesGridView.RowTemplate.Height = 29;
-			RecipesGridView.Size = new Size(707, 587);
+			RecipesGridView.Size = new Size(784, 587);
 			RecipesGridView.TabIndex = 0;
 			// 
 			// UserSelectGridView
@@ -55,23 +55,23 @@
 			UserSelectGridView.Name = "UserSelectGridView";
 			UserSelectGridView.RowHeadersWidth = 51;
 			UserSelectGridView.RowTemplate.Height = 29;
-			UserSelectGridView.Size = new Size(431, 587);
+			UserSelectGridView.Size = new Size(326, 587);
 			UserSelectGridView.TabIndex = 1;
 			// 
 			// ResultsGridView
 			// 
 			ResultsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			ResultsGridView.Location = new Point(540, 641);
+			ResultsGridView.Location = new Point(463, 641);
 			ResultsGridView.Name = "ResultsGridView";
 			ResultsGridView.RowHeadersWidth = 51;
 			ResultsGridView.RowTemplate.Height = 29;
-			ResultsGridView.Size = new Size(707, 153);
+			ResultsGridView.Size = new Size(784, 153);
 			ResultsGridView.TabIndex = 2;
 			// 
 			// ChkBoxShowAllRecipes
 			// 
 			ChkBoxShowAllRecipes.AutoSize = true;
-			ChkBoxShowAllRecipes.Location = new Point(78, 670);
+			ChkBoxShowAllRecipes.Location = new Point(78, 641);
 			ChkBoxShowAllRecipes.Name = "ChkBoxShowAllRecipes";
 			ChkBoxShowAllRecipes.Size = new Size(144, 24);
 			ChkBoxShowAllRecipes.TabIndex = 3;
@@ -82,7 +82,7 @@
 			// ComboBoxMachine
 			// 
 			ComboBoxMachine.FormattingEnabled = true;
-			ComboBoxMachine.Location = new Point(71, 700);
+			ComboBoxMachine.Location = new Point(180, 671);
 			ComboBoxMachine.Name = "ComboBoxMachine";
 			ComboBoxMachine.Size = new Size(151, 28);
 			ComboBoxMachine.TabIndex = 4;

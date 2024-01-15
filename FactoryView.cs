@@ -29,8 +29,9 @@ public partial class FactoryView : Form
 		RecipesGridView.AutoGenerateColumns = true; // Allow auto-generation of columns
 		RecipesGridView.DataSource = viewModel.RecipeTable;
 		RecipesGridView.ReadOnly = true;
+		RecipesGridView.RowHeadersVisible = false;
 
-		foreach(DataGridViewColumn col in RecipesGridView.Columns)
+		foreach (DataGridViewColumn col in RecipesGridView.Columns)
 		{
 			col.Width = 50;
 		}
@@ -51,11 +52,15 @@ public partial class FactoryView : Form
 
 
 		UserSelectGridView.DataSource = viewModel.UserSelections;
+		UserSelectGridView.Columns[0].Width = 55;
+		UserSelectGridView.RowHeadersVisible = false;
 		ResultsGridView.DataSource = viewModel.ResultsTable;
+
 		foreach (DataGridViewColumn col in ResultsGridView.Columns)
 		{
 			col.Width = 50;
 		}
+		ResultsGridView.RowHeadersVisible = false;
 		ResultsGridView.ReadOnly = true;
 
 	}
@@ -278,7 +283,7 @@ public class MainViewModel
 		Recipes2.RemoveAt(0);
 
 		//Initialise the UserSelections
-		string UserSelectionsColText = "User \nSelections";
+		string UserSelectionsColText = "User \nSelect";
 		UserSelections.Columns.Add(UserSelectionsColText);
 		UserSelectionsColText = "Recipe";
 		UserSelections.Columns.Add(UserSelectionsColText);
