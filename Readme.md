@@ -40,7 +40,7 @@ B-->D((Final Product))
 
 I did not write the recipe tables or otherwise any gameplay ideas copied into this app. 
 
-Credit for these excellent ideas belongs to Coffee Stain and KYR.ium Mods.
+Credit for these ideas and work belongs to Coffee Stain and KYR.ium Mods.
 
 Official K-Mods discord: [KMods Discord](https://discord.gg/JsJ9XXWS7Q)
 
@@ -49,7 +49,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5NDAyMzYzMiwyMDIyOTgzMTE0LC00Mz
+eyJoaXN0b3J5IjpbLTY2OTg5MTMxMCwyMDIyOTgzMTE0LC00Mz
 UyMDU1MDEsMTAzNjYyNjcyMiwtNjIwMjE2Nzk1LC0zMzM4Njk2
 ODFdfQ==
 -->
