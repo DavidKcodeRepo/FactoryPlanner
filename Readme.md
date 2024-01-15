@@ -30,10 +30,10 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 
 ```mermaid
 graph LR
-A[Load Project] -->B((User chooses <br> product ))-->C(())
+A[Load Project] -->B((User chooses <br> product ))-->C((Input output adjusts))
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjEzNDU4NDQsLTYyMDIxNjc5NSwtMz
-MzODY5NjgxXX0=
+eyJoaXN0b3J5IjpbNDczNTk3NTQzLC02MjAyMTY3OTUsLTMzMz
+g2OTY4MV19
 -->
