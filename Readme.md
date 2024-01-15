@@ -2,7 +2,7 @@
 
 Factory planner is a tool for playing the game Satisfactory+ - an automation and base-building game. It solves the challenge of planning a complex factory with several production stages and machines.
 
-![Factory Planner UI](https://i.imgur.com/izmU7K1.png)
+![FactoryUI](https://i.imgur.com/fIu43oR.png)
 
 A list of game-recipes is pre-populated from which a user makes selections to edit the resulting output and check the balance of intermediate products. 
 
@@ -50,7 +50,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTEwMjM3NzY2LDIwMjI5ODMxMTQsLTQzNT
-IwNTUwMSwxMDM2NjI2NzIyLC02MjAyMTY3OTUsLTMzMzg2OTY4
-MV19
+eyJoaXN0b3J5IjpbLTEyMjUyMzM2NCw1MTAyMzc3NjYsMjAyMj
+k4MzExNCwtNDM1MjA1NTAxLDEwMzY2MjY3MjIsLTYyMDIxNjc5
+NSwtMzMzODY5NjgxXX0=
 -->
