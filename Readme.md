@@ -2,7 +2,7 @@
 
 Factory planner is a tool for playing the game Satisfactory+ - an automation and base-building game. It solves the challenge of planning a complex factory with several production stages and machines.
 
-![Factory Planner UI](https://i.imgur.com/izmU7K1.png)
+![FactoryUI](https://i.imgur.com/fIu43oR.png)
 
 A list of game-recipes is pre-populated from which a user makes selections to edit the resulting output and check the balance of intermediate products. 
 
@@ -29,11 +29,11 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 
 ## Getting started
 
-The general use of this is imagined to be iterative like this:
+The general use of this is imagined to be iterative like this.
 ```mermaid
 graph LR
-A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))-->B
-B-->D((Final Product))
+A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))--User not happy --->B
+C-- User is happy--->D((Final Product))
 ```
 
 ## Credits & Acknowledgements
@@ -50,7 +50,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTEwMjM3NzY2LDIwMjI5ODMxMTQsLTQzNT
-IwNTUwMSwxMDM2NjI2NzIyLC02MjAyMTY3OTUsLTMzMzg2OTY4
-MV19
+eyJoaXN0b3J5IjpbLTU5MDUwMjAwMCwtMjc3NDQ1ODAsLTEyMj
+UyMzM2NCw1MTAyMzc3NjYsMjAyMjk4MzExNCwtNDM1MjA1NTAx
+LDEwMzY2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
 -->
