@@ -1,6 +1,6 @@
 # Factory Planner
 
-Factory planner is a tool for playing the game Satisfactory- an automation and base-building game . It solves the challenge of planning a complex factory with several production stages and machines.
+Factory planner is a tool for playing the game Satisfactory+ - an automation and base-building game. It solves the challenge of planning a complex factory with several production stages and machines.
 
 ![Factory Planner UI](https://i.imgur.com/izmU7K1.png)
 
@@ -36,8 +36,13 @@ A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balan
 B-->D((Final Product))
 ```
 
+## Credits 
+
+I did not write the recipe tables or other ideas utilised in this app.  
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMjk4MzExNCwtNDM1MjA1NTAxLDEwMz
-Y2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
+eyJoaXN0b3J5IjpbLTE1Njg4NjE5NzMsMjAyMjk4MzExNCwtND
+M1MjA1NTAxLDEwMzY2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5
+NjgxXX0=
 -->
