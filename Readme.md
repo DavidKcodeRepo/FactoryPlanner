@@ -1,4 +1,4 @@
-# Factory Planner - Readme
+# Factory Planner
 
 Factory planner is a tool for playing the game Satisfactory- an automation and base-building game . It solves the challenge of planning a complex factory with several production stages and machines.
 
@@ -37,6 +37,6 @@ B-->D((Final Product))
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNjYyNjcyMiwtNjIwMjE2Nzk1LC0zMz
-M4Njk2ODFdfQ==
+eyJoaXN0b3J5IjpbLTQzNTIwNTUwMSwxMDM2NjI2NzIyLC02Mj
+AyMTY3OTUsLTMzMzg2OTY4MV19
 -->
