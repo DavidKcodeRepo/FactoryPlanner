@@ -13,6 +13,8 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 ## Features
 
 
+
+
  - automatic filtering for ingredients based on recipe search
  - machine-lookup to find recipes
  - conditional formatting for glancing 
@@ -28,12 +30,13 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 
 ## 
 
+
+```
 ```mermaid
 graph LR
-A[Load Project] -->B((User chooses <br> product ))-->C((Input output adjusts))
-```
-
+A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))-->B
+B-->D((Final Product))
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDczNTk3NTQzLC02MjAyMTY3OTUsLTMzMz
-g2OTY4MV19
+eyJoaXN0b3J5IjpbLTg1OTc5MTUxMCwtNjIwMjE2Nzk1LC0zMz
+M4Njk2ODFdfQ==
 -->
