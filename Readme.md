@@ -13,8 +13,6 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 ## Features
 
 
-
-
  - automatic filtering for ingredients based on recipe search
  - machine-lookup to find recipes
  - conditional formatting for glancing 
@@ -28,15 +26,17 @@ This is a conceptually simple problem; but the number of recipes, combinations o
    configured in the app.config file. 
  - This application was authored from the C# winforms application template in visual studio using only my own knowledge & ability to research documentation; this is my own work and not a reskin of another online tutorial.
 
-## 
+## Getting started
 
-
-```
+The general use of this is imagined to be iterative like this:
 ```mermaid
 graph LR
 A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))-->B
 B-->D((Final Product))
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1OTc5MTUxMCwtNjIwMjE2Nzk1LC0zMz
+eyJoaXN0b3J5IjpbMTAzNjYyNjcyMiwtNjIwMjE2Nzk1LC0zMz
 M4Njk2ODFdfQ==
 -->
