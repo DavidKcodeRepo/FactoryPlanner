@@ -29,7 +29,7 @@ This is a conceptually simple problem; but the number of recipes, combinations o
 
 ## Getting started
 
-The general use of this is imagined to be iterative like this:
+The general use of this is imagined to be iterative like this.
 ```mermaid
 graph LR
 A[Load Project] -->B((User selects <br> recipes ))-->C((Output recalc <br> balances))--User Not happy --->B
@@ -50,7 +50,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NzQ0NTgwLC0xMjI1MjMzNjQsNTEwMj
-M3NzY2LDIwMjI5ODMxMTQsLTQzNTIwNTUwMSwxMDM2NjI2NzIy
-LC02MjAyMTY3OTUsLTMzMzg2OTY4MV19
+eyJoaXN0b3J5IjpbLTkyOTEwMjkyOCwtMjc3NDQ1ODAsLTEyMj
+UyMzM2NCw1MTAyMzc3NjYsMjAyMjk4MzExNCwtNDM1MjA1NTAx
+LDEwMzY2MjY3MjIsLTYyMDIxNjc5NSwtMzMzODY5NjgxXX0=
 -->
