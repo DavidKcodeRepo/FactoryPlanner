@@ -4,7 +4,7 @@ Factory planner is a tool for playing the game Satisfactory+ - an automation and
 
 ![FactoryUI](https://i.imgur.com/fIu43oR.png)
 
-A list of ~250 game-recipes affecting ~400 ingredients is pre-populated from which a user makes selections to edit the resulting output and check the balance of intermediate products. 
+A list of ~250 game-recipes (rows) affecting ~400 (columns) ingredients is pre-populated from which a user makes selections to edit the resulting output and check the balance of intermediate products. 
 
 Essentially, the program is a product sum calculating data grids with dynamic column row filtering based on the users needs. 
 
@@ -50,7 +50,7 @@ Official Satisfactory discord: [Satisfactory  Discord](https://discord.com/invit
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM5MzgwMjE0LC01OTA1MDIwMDAsLTI3Nz
+eyJoaXN0b3J5IjpbNDkwMzM1ODE4LC01OTA1MDIwMDAsLTI3Nz
 Q0NTgwLC0xMjI1MjMzNjQsNTEwMjM3NzY2LDIwMjI5ODMxMTQs
 LTQzNTIwNTUwMSwxMDM2NjI2NzIyLC02MjAyMTY3OTUsLTMzMz
 g2OTY4MV19
