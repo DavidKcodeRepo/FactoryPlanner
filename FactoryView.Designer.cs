@@ -48,12 +48,17 @@
 			// 
 			// RecipesGridView
 			// 
+			RecipesGridView.AllowUserToAddRows = false;
+			RecipesGridView.AllowUserToDeleteRows = false;
+			RecipesGridView.AllowUserToResizeColumns = false;
 			RecipesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			RecipesGridView.Location = new Point(463, 47);
+			RecipesGridView.Location = new Point(460, 47);
+			RecipesGridView.MaximumSize = new Size(1468, 542);
+			RecipesGridView.MinimumSize = new Size(800, 542);
 			RecipesGridView.Name = "RecipesGridView";
 			RecipesGridView.RowHeadersWidth = 51;
 			RecipesGridView.RowTemplate.Height = 29;
-			RecipesGridView.Size = new Size(784, 542);
+			RecipesGridView.Size = new Size(800, 542);
 			RecipesGridView.TabIndex = 0;
 			// 
 			// UserSelectGridView
@@ -68,12 +73,15 @@
 			// 
 			// ResultsGridView
 			// 
+			ResultsGridView.Anchor = AnchorStyles.Left;
 			ResultsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			ResultsGridView.Location = new Point(463, 637);
+			ResultsGridView.Location = new Point(460, 637);
+			ResultsGridView.MaximumSize = new Size(1468, 136);
+			ResultsGridView.MinimumSize = new Size(800, 136);
 			ResultsGridView.Name = "ResultsGridView";
 			ResultsGridView.RowHeadersWidth = 51;
 			ResultsGridView.RowTemplate.Height = 29;
-			ResultsGridView.Size = new Size(784, 136);
+			ResultsGridView.Size = new Size(800, 136);
 			ResultsGridView.TabIndex = 2;
 			// 
 			// ChkBoxShowAllRecipes
@@ -178,7 +186,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1308, 817);
+			ClientSize = new Size(1342, 817);
 			Controls.Add(label9);
 			Controls.Add(label8);
 			Controls.Add(label7);
