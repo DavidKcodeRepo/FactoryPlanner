@@ -51,6 +51,7 @@ public partial class FactoryView : Form
 		UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
 		RecipesGridView.Scroll += RecipesGridView_HorzScroll;
 		ResultsGridView.Scroll += ResultsGridView_HorzScroll;
+		this.Resize += MainForm_Resize;
 
 
 		UserSelectGridView.DataSource = viewModel.UserSelections;
@@ -68,6 +69,14 @@ public partial class FactoryView : Form
 		ResultsGridView.ReadOnly = true;
 		ResultsGridView.ScrollBars = ScrollBars.None;
 
+	}
+
+	private void MainForm_Resize(object sender, EventArgs e)
+	{
+		//Adjust Control sizes and positions here
+
+		RecipesGridView.Width = this.Width - 460 - 100;
+		ResultsGridView.Width = this.Width - 460 - 100;
 	}
 
 	private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
