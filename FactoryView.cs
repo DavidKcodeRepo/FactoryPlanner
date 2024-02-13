@@ -8,20 +8,20 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 using FactoryPlanner.Helper;
+using System.Reflection;
 
 namespace FactoryPlanner;
 
 public partial class FactoryView : Form
 {
-	private readonly FactoryModel viewModel;
+	private readonly FactoryViewModel ViewModel;
 
 	public FactoryView()
 	{
 		InitializeComponent();
-		viewModel = new FactoryModel();
-
-		// Subscribe MainForm_Load to the Load event of the form
-		Load += MainForm_Load;
+        this.ViewModel = new FactoryViewModel();
+        InitializeGridViews();
+        SubscribeEvents();
 	}
 
 	private void MainForm_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ public partial class FactoryView : Form
 
 		// Set up the DataGridView
 		RecipesGridView.AutoGenerateColumns = true; // Allow auto-generation of columns
-		RecipesGridView.DataSource = viewModel.RecipeTable;
+		RecipesGridView.DataSource = ViewModel.RecipeTable;
 		RecipesGridView.ReadOnly = true;
 		RecipesGridView.RowHeadersVisible = false;
 		RecipesGridView.ScrollBars = ScrollBars.Vertical;
@@ -40,28 +40,14 @@ public partial class FactoryView : Form
 			col.Width = 50;
 		}
 
-		ComboBoxMachine.DataSource = Enum.GetValues(typeof(Machines));
-		ComboBoxMachine.SelectedValueChanged += ResetRows;
-		UserSelectGridView.CellValueChanged += UpdateCalculation;
-		UserSelectGridView.CellValueChanged += ResetColumns;
-		UserSelectGridView.CellValueChanged += ResetRows;
-		ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
-		RecipesGridView.CellFormatting += FormatNonZero;
-		ResultsGridView.CellFormatting += FormatNonZero;
-		UserSelectGridView.CellFormatting += FormatNonZero;
-		RecipesGridView.Scroll += RecipesGridView_VertScroll;
-		UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
-		RecipesGridView.Scroll += RecipesGridView_HorzScroll;
-		ResultsGridView.Scroll += ResultsGridView_HorzScroll;
-		this.Resize += MainForm_Resize;
 
 
-		UserSelectGridView.DataSource = viewModel.UserSelections;
+		UserSelectGridView.DataSource = ViewModel.UserSelections;
 		UserSelectGridView.Columns[0].Width = 55;
 		UserSelectGridView.RowHeadersVisible = false;
 		UserSelectGridView.ScrollBars = ScrollBars.Vertical;
 
-		ResultsGridView.DataSource = viewModel.ResultsTable;
+		ResultsGridView.DataSource = ViewModel.ResultsTable;
 
 		foreach (DataGridViewColumn col in ResultsGridView.Columns)
 		{
@@ -73,7 +59,40 @@ public partial class FactoryView : Form
 
 	}
 
-	private void MainForm_Resize(object sender, EventArgs e)
+    private void SubscribeEvents()
+    {
+        // Subscribe view events to ViewModel eventHandlers
+        UserSelectGridView.CellValueChanged += ViewModel.UpdateCalculation;
+        RecipesGridView.CellFormatting += ViewModel.FormatNonZero;
+        ResultsGridView.CellFormatting += ViewModel.FormatNonZero;
+        UserSelectGridView.CellFormatting += ViewModel.FormatNonZero;
+
+        RecipesGridView.Scroll += RecipesGridView_HorzScroll;
+        ResultsGridView.Scroll += ResultsGridView_HorzScroll;
+        this.Resize += MainForm_Resize;
+        UserSelectGridView.CellValueChanged += ViewModel.UpdateCalculation;
+        
+		// Subscribe view events to view  event handlers
+        RecipesGridView.Scroll += RecipesGridView_VertScroll;
+        UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
+        Load += MainForm_Load;
+        UserSelectGridView.CellValueChanged += ResetColumns;
+        UserSelectGridView.CellValueChanged += ResetRows;
+        ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
+        ComboBoxMachine.SelectedValueChanged += ResetRows;
+    }
+
+    private void InitializeGridViews()
+    {
+        // Initialize DataGridViews and bind to ViewModel properties
+        RecipesGridView.AutoGenerateColumns = true;
+        RecipesGridView.DataSource = ViewModel.RecipeTable;
+        // Initialize other DataGridViews similarly
+
+        // Set up column widths, event handlers, etc.
+    }
+
+    private void MainForm_Resize(object sender, EventArgs e)
 	{
 		//Adjust Control sizes and positions here
 
@@ -107,7 +126,7 @@ public partial class FactoryView : Form
 		//show all recipe checkbox overrides hide-cols functionality by resetting tables and exits early 
 		if (ChkBoxShowAllRecipes.Checked)
 		{
-			for (int i = 0; i < viewModel.RecipeTable.Columns.Count; i++)
+			for (int i = 0; i < ViewModel.RecipeTable.Columns.Count; i++)
 			{
 				DataGridViewColumn resColV = ResultsGridView.Columns[i];
 				DataGridViewColumn recpColV = RecipesGridView.Columns[i];
@@ -121,11 +140,11 @@ public partial class FactoryView : Form
 		}
 
 		//update hidden columns
-		for (int i = 0; i < viewModel.RecipeTable.Columns.Count; i++)
+		for (int i = 0; i < ViewModel.RecipeTable.Columns.Count; i++)
 		{
-			double check1 = Convert.ToDouble(viewModel.ResultsTable.Rows[0][i]);
-			double check2 = Convert.ToDouble(viewModel.ResultsTable.Rows[1][i]);
-			double check3 = Convert.ToDouble(viewModel.ResultsTable.Rows[2][i]);
+			double check1 = Convert.ToDouble(ViewModel.ResultsTable.Rows[0][i]);
+			double check2 = Convert.ToDouble(ViewModel.ResultsTable.Rows[1][i]);
+			double check3 = Convert.ToDouble(ViewModel.ResultsTable.Rows[2][i]);
 
 			DataGridViewColumn resColV = ResultsGridView.Columns[i];
 			DataGridViewColumn recpColV = RecipesGridView.Columns[i];
@@ -152,7 +171,7 @@ public partial class FactoryView : Form
 		if (ChkBoxShowAllRecipes.Checked)
 		{
 
-			for (int j = 0; j < viewModel.RecipeTable.Rows.Count; j++)
+			for (int j = 0; j < ViewModel.RecipeTable.Rows.Count; j++)
 			{
 				DataGridViewRow userSRowV = UserSelectGridView.Rows[j];
 				DataGridViewRow recpRowV = RecipesGridView.Rows[j];
@@ -167,7 +186,7 @@ public partial class FactoryView : Form
 		//next machine-type overides hide-rows functionality by choosing rows and exiting early
 		if (!machinetype.Equals("All")) //a specific-machine is selected
 		{
-			for (int j = 0; j < viewModel.RecipeTable.Rows.Count; j++)
+			for (int j = 0; j < ViewModel.RecipeTable.Rows.Count; j++)
 			{
 				DataGridViewRow userSRowV = UserSelectGridView.Rows[j];
 				DataGridViewRow recpRowV = RecipesGridView.Rows[j];
@@ -189,7 +208,7 @@ public partial class FactoryView : Form
 			return;
 		}
 
-		for (int j = 0; j < viewModel.RecipeTable.Rows.Count; j++)
+		for (int j = 0; j < ViewModel.RecipeTable.Rows.Count; j++)
 		{
 			DataGridViewRow userSRowV = UserSelectGridView.Rows[j];
 			DataGridViewRow recpRowV = RecipesGridView.Rows[j];
@@ -198,9 +217,9 @@ public partial class FactoryView : Form
 			recpRowV.Visible = true;
 		}
 
-		for (int j = 0; j < viewModel.RecipeTable.Rows.Count; j++)
+		for (int j = 0; j < ViewModel.RecipeTable.Rows.Count; j++)
 		{
-			double result = Convert.ToDouble(viewModel.UserSelections.Rows[j][0]);
+			double result = Convert.ToDouble(ViewModel.UserSelections.Rows[j][0]);
 			DataGridViewRow userSRowV = UserSelectGridView.Rows[j];
 			DataGridViewRow recpRowV = RecipesGridView.Rows[j];
 
@@ -221,33 +240,6 @@ public partial class FactoryView : Form
 		return;
 	}
 
-	private static void FormatNonZero(object sender, DataGridViewCellFormattingEventArgs e)
-	{
-		DataGridView dataGridView = (DataGridView)sender;
-
-		if (e.Value != null && double.TryParse(e.Value.ToString(), out double result))
-		{
-			// Check if the value is greater than 0
-			if (Convert.ToDouble(e.Value) > 0)
-			{
-				e.CellStyle.ForeColor = Color.Green;
-				e.CellStyle.BackColor = Color.LightGreen;
-			}
-			else if (Convert.ToDouble(e.Value) < 0)
-			{
-				e.CellStyle.ForeColor = Color.Red;
-				e.CellStyle.BackColor = Color.MistyRose;
-			}
-		}
-	}
-
-	// model
-	private void UpdateCalculation(object? sender, DataGridViewCellEventArgs e)
-	{
-		// publish result to results table
-		viewModel.UpdateResults();
-	}
-
 	private void RecipesGridView_VertScroll(object sender, ScrollEventArgs e)
 	{
 		UserSelectGridView.FirstDisplayedScrollingRowIndex =
@@ -258,11 +250,5 @@ public partial class FactoryView : Form
 	{
 		RecipesGridView.FirstDisplayedScrollingRowIndex =
 			UserSelectGridView.FirstDisplayedScrollingRowIndex;
-	}
-
-	//TODO - ?
-	private void textBox1_TextChanged(object sender, EventArgs e)
-	{
-
 	}
 }

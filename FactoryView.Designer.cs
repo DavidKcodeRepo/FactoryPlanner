@@ -102,10 +102,11 @@
 			ComboBoxMachine.Name = "ComboBoxMachine";
 			ComboBoxMachine.Size = new Size(151, 28);
 			ComboBoxMachine.TabIndex = 4;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
+            ComboBoxMachine.DataSource = Enum.GetValues(typeof(Machines));
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
 			label1.Location = new Point(78, 695);
 			label1.Name = "label1";
 			label1.Size = new Size(112, 20);

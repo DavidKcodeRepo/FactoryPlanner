@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 using FactoryPlanner.Helper;
 using FactoryPlanner;
@@ -12,11 +13,9 @@ namespace FactoryPlanner;
 
 public class FactoryModel
 {
-    public DataTable RecipeTable { get; set; }
-    public DataTable UserSelections { get; set; }
-
-    public DataTable ResultsTable { get; set; }
-
+    public DataTable RecipeTable { get; private set; }
+    public DataTable UserSelections { get; private set; }
+    public DataTable ResultsTable { get; private set; }
     public int IngredientCount = 0;
 
 
