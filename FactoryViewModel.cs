@@ -7,12 +7,23 @@ using System.Threading.Tasks;
 using FactoryPlanner.Helper;
 using FactoryPlanner;
 using System.Data;
+using System.ComponentModel;
 
 namespace FactoryPlanner;
 
-public class FactoryViewModel
+public class FactoryViewModel : INotifyPropertyChanged
 {
-    private readonly FactoryModel Model;
+    private FactoryModel _model;
+    public FactoryModel Model
+    {
+        get { return _model; }
+        set
+        {
+            _model = value;
+            OnPropertyChanged(nameof(Model));
+            OnPropertyChanged(nameof(RecipeTable));
+        }
+    }
 
     public FactoryViewModel()
     {
@@ -22,6 +33,12 @@ public class FactoryViewModel
     public DataTable RecipeTable => Model.RecipeTable;
     public DataTable UserSelections => Model.UserSelections;
     public DataTable ResultsTable => Model.ResultsTable;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
     public void FormatNonZero(object sender, DataGridViewCellFormattingEventArgs e)
     {

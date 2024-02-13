@@ -79,7 +79,7 @@ public partial class FactoryView : Form
         UserSelectGridView.CellValueChanged += ResetColumns;
         UserSelectGridView.CellValueChanged += ResetRows;
         ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
-        ComboBoxMachine.SelectedValueChanged += ResetRows;
+        MachineComboBox.SelectedValueChanged += ResetRows;
     }
 
     private void InitializeGridViews()
@@ -98,9 +98,13 @@ public partial class FactoryView : Form
 
 		RecipesGridView.Width = this.Width - 460 - 100;
 		ResultsGridView.Width = this.Width - 460 - 100;
-	}
 
-	private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
+        UserSelectGridView.Height= this.Height - 140 - 200;
+        RecipesGridView.Height = this.Height - 140 - 200;
+
+    }
+
+    private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
 	{
 		RecipesGridView.FirstDisplayedScrollingColumnIndex =
 			ResultsGridView.FirstDisplayedScrollingColumnIndex;
@@ -114,12 +118,12 @@ public partial class FactoryView : Form
 
 	private void ResetRows(object sender, EventArgs e)
 	{
-		ShowHideRows((string)ComboBoxMachine.Text);
+		ShowHideRows((string)MachineComboBox.Text);
 	}
 
 	private void ResetColumns(object? sender, DataGridViewCellEventArgs e)
 	{
-		ShowHideColumns((string)ComboBoxMachine.Text);
+		ShowHideColumns((string)MachineComboBox.Text);
 	}
 	private void ShowHideColumns(string machineType)
 	{
