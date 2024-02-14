@@ -33,12 +33,10 @@ public class FactoryModel
 
         string currentDirectory = Environment.CurrentDirectory;
 
-        string Recipes = GlobalConfig.TestRecipesFile;
-
-        List<string> Recipes2 = Recipes.FullFilePath()
+        List<string> Recipes = GlobalConfig.TestRecipesFile.FullFilePath()
             .LoadFile();
 
-        string Headers = Recipes2[0];
+        string Headers = Recipes[0];
         List<string> ColHeaders = Headers.Split(",").ToList();
 
 
@@ -48,7 +46,7 @@ public class FactoryModel
             ResultsTable.Columns.Add(ColHeaders[i]);
         }
 
-        Recipes2.RemoveAt(0);
+        Recipes.RemoveAt(0);
 
         //Initialise the UserSelections
         string UserSelectionsColText = "User \nSelect";
@@ -58,7 +56,7 @@ public class FactoryModel
         UserSelectionsColText = "Machine";
         UserSelections.Columns.Add(UserSelectionsColText);
 
-        foreach (var recipe in Recipes2)
+        foreach (var recipe in Recipes)
         {
             string[] inputRowData = recipe.Split(",");
             int[] zeros = { 0 };
@@ -100,19 +98,23 @@ public class FactoryModel
 
             for (int j = 0; j < RecipeTable.Rows.Count; j++)
             {
+                //skip row if nothing in the userSelection
+                if (string.IsNullOrEmpty(Convert.ToString(RecipeTable.Rows[j][i])))
+                {
+                    continue;
+                }
+
                 double countThisRecipe = Convert.ToDouble(UserSelections.Rows[j][0]);
                 double recipeIOValue = 0;
-                if (!string.IsNullOrEmpty(Convert.ToString(RecipeTable.Rows[j][i])))
+                
+                recipeIOValue = Convert.ToDouble(RecipeTable.Rows[j][i]);
+                if (recipeIOValue > 0)
                 {
-                    recipeIOValue = Convert.ToDouble(RecipeTable.Rows[j][i]);
-                    if (recipeIOValue > 0)
-                    {
-                        resultPositiveTotal += countThisRecipe * recipeIOValue;
-                    }
-                    if (recipeIOValue < 0)
-                    {
-                        resultNegativeTotal += countThisRecipe * recipeIOValue;
-                    }
+                    resultPositiveTotal += countThisRecipe * recipeIOValue;
+                }
+                if (recipeIOValue < 0)
+                {
+                    resultNegativeTotal += countThisRecipe * recipeIOValue;
                 }
                 resultBalance += countThisRecipe * recipeIOValue;
                 ResultsTable.Rows[0][i] = resultNegativeTotal;

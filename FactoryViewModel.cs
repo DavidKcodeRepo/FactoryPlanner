@@ -77,7 +77,6 @@ public class FactoryViewModel : INotifyPropertyChanged
 
         if (e.Value != null && double.TryParse(e.Value.ToString(), out double result))
         {
-            // Check if the value is greater than 0
             if (Convert.ToDouble(e.Value) > 0.1)
             {
                 e.CellStyle.ForeColor = Color.Green;

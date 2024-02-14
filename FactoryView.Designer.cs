@@ -97,23 +97,8 @@
         // 
         // MachineComboBox
         // 
-        MachineComboBox.DataSource = new Machines[]
-        {
-            Machines.All,
-            Machines.Crusher,
-            Machines.Sorter,
-            Machines.Smelter,
-            Machines.Foundry,
-            Machines.BlastFurnace,
-            Machines.CoolerSolidifier,
-            Machines.OreWasher,
-            Machines.FluidConditioner,
-            Machines.Constructor,
-            Machines.Assembler,
-            Machines.Manufacturer,
-            Machines.ChemicalReactor,
-            Machines.Weaver
-        };
+        MachineComboBox.DataSource = Enum.GetValues(typeof(Machines));
+
         MachineComboBox.FormattingEnabled = true;
         MachineComboBox.Location = new Point(194, 692);
         MachineComboBox.Name = "MachineComboBox";

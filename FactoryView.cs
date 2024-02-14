@@ -168,7 +168,6 @@ public partial class FactoryView : Form
 				recpColV.Visible = true;
 			}
 
-			this.Refresh();
 			return;
 		}
 
@@ -195,7 +194,6 @@ public partial class FactoryView : Form
 		}
 
         System.Diagnostics.Debug.WriteLine("Refreshing the view");
-        this.Refresh();
 		return;
 	}
 
@@ -214,7 +212,6 @@ public partial class FactoryView : Form
 				userSRowV.Visible = true;
 				recpRowV.Visible = true;
 			}
-			this.Refresh();
 			return;
 		}
 
@@ -239,7 +236,6 @@ public partial class FactoryView : Form
 					recpRowV.Visible = true;
 				}
 			}
-			this.Refresh();
 			return;
 		}
 
@@ -271,7 +267,6 @@ public partial class FactoryView : Form
 				recpRowV.Visible = true;
 			}
 		}
-		this.Refresh();
 		return;
 	}
 
