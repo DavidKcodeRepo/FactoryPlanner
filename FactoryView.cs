@@ -9,27 +9,32 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 using FactoryPlanner.Helper;
 using System.Reflection;
+using System.ComponentModel;
+using System.ComponentModel.Design;
 
 namespace FactoryPlanner;
 
 public partial class FactoryView : Form
 {
 	private readonly FactoryViewModel ViewModel;
+	private bool IsResizing = false;
 
 	public FactoryView()
 	{
-		InitializeComponent();
+        System.Diagnostics.Debug.WriteLine("View is instantiating");
+
+        InitializeComponent();
         this.ViewModel = new FactoryViewModel();
         InitializeGridViews();
-        SubscribeEvents();
+        Load += MainForm_Load;
 	}
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{
+        System.Diagnostics.Debug.WriteLine("Form has loaded");
 
-		// Set up the DataGridView
-		RecipesGridView.AutoGenerateColumns = true; // Allow auto-generation of columns
-		RecipesGridView.DataSource = ViewModel.RecipeTable;
+        // Set up the DataGridView
+        RecipesGridView.AutoGenerateColumns = true; // Allow auto-generation of columns
 		RecipesGridView.ReadOnly = true;
 		RecipesGridView.RowHeadersVisible = false;
 		RecipesGridView.ScrollBars = ScrollBars.Vertical;
@@ -40,14 +45,10 @@ public partial class FactoryView : Form
 			col.Width = 50;
 		}
 
-
-
-		UserSelectGridView.DataSource = ViewModel.UserSelections;
-		UserSelectGridView.Columns[0].Width = 55;
+        UserSelectGridView.Columns[0].Width = 55;
 		UserSelectGridView.RowHeadersVisible = false;
 		UserSelectGridView.ScrollBars = ScrollBars.Vertical;
 
-		ResultsGridView.DataSource = ViewModel.ResultsTable;
 
 		foreach (DataGridViewColumn col in ResultsGridView.Columns)
 		{
@@ -56,63 +57,90 @@ public partial class FactoryView : Form
 		ResultsGridView.RowHeadersVisible = false;
 		ResultsGridView.ReadOnly = true;
 		ResultsGridView.ScrollBars = ScrollBars.None;
-
-	}
+        SubscribeEvents();
+    }
 
     private void SubscribeEvents()
     {
-        // Subscribe view events to ViewModel eventHandlers
-        UserSelectGridView.CellValueChanged += ViewModel.UpdateCalculation;
-        RecipesGridView.CellFormatting += ViewModel.FormatNonZero;
-        ResultsGridView.CellFormatting += ViewModel.FormatNonZero;
-        UserSelectGridView.CellFormatting += ViewModel.FormatNonZero;
+
+        System.Diagnostics.Debug.WriteLine("Subscribing the view to events");
+
+
+        //Subscribe viemodel events to View event handlers
+
+        ViewModel.PropertyChanged += ResetDataGrid;
+		ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
+        MachineComboBox.SelectedValueChanged += ResetRows;
+
+
+        //UserSelectGridView.CellValueChanged += ResetColumns;
+        //UserSelectGridView.CellValueChanged += ResetRows;
+        //ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
+        //MachineComboBox.SelectedValueChanged += ResetRows;
+
+        // Subscribe view events to view event handlers
+        RecipesGridView.Scroll += RecipesGridView_VertScroll;
+        UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
+
 
         RecipesGridView.Scroll += RecipesGridView_HorzScroll;
         ResultsGridView.Scroll += ResultsGridView_HorzScroll;
         this.Resize += MainForm_Resize;
-        UserSelectGridView.CellValueChanged += ViewModel.UpdateCalculation;
-        
-		// Subscribe view events to view  event handlers
-        RecipesGridView.Scroll += RecipesGridView_VertScroll;
-        UserSelectGridView.Scroll += UserSelectGridView_VertScroll;
-        Load += MainForm_Load;
-        UserSelectGridView.CellValueChanged += ResetColumns;
-        UserSelectGridView.CellValueChanged += ResetRows;
-        ChkBoxShowAllRecipes.CheckedChanged += ResetRows;
-        MachineComboBox.SelectedValueChanged += ResetRows;
+
+        // Subscribe view events to ViewModel eventHandlers
+        RecipesGridView.CellFormatting += ViewModel.FormatNonZero;
+        ResultsGridView.CellFormatting += ViewModel.FormatNonZero;
+        UserSelectGridView.CellFormatting += ViewModel.FormatNonZero;
+
+
+    }
+
+    private void ResetDataGrid(object? sender, PropertyChangedEventArgs e)
+    {
+        ShowHideRows((string)MachineComboBox.Text);
+        ShowHideColumns((string)MachineComboBox.Text);
     }
 
     private void InitializeGridViews()
     {
-        // Initialize DataGridViews and bind to ViewModel properties
-        RecipesGridView.AutoGenerateColumns = true;
-        RecipesGridView.DataSource = ViewModel.RecipeTable;
-        // Initialize other DataGridViews similarly
 
-        // Set up column widths, event handlers, etc.
+        System.Diagnostics.Debug.WriteLine("view is binding data to viewmodel");
+
+        RecipesGridView.DataSource = ViewModel.RecipeTable;
+        UserSelectGridView.DataSource = ViewModel.UserSelections;
+        ResultsGridView.DataSource = ViewModel.ResultsTable;
     }
 
     private void MainForm_Resize(object sender, EventArgs e)
 	{
-		//Adjust Control sizes and positions here
+		if (!IsResizing)
+		{
+			IsResizing = true;
+			System.Diagnostics.Debug.WriteLine("Resizing the form");
 
-		RecipesGridView.Width = this.Width - 460 - 100;
-		ResultsGridView.Width = this.Width - 460 - 100;
+			//Adjust Control sizes and positions here
 
-        UserSelectGridView.Height= this.Height - 140 - 200;
-        RecipesGridView.Height = this.Height - 140 - 200;
+			RecipesGridView.Width = this.Width - 460 - 100;
+			ResultsGridView.Width = this.Width - 460 - 100;
 
+			UserSelectGridView.Height = this.Height - 140 - 200;
+			RecipesGridView.Height = this.Height - 140 - 200;
+			IsResizing = false;
+		}
     }
 
     private void ResultsGridView_HorzScroll(object? sender, ScrollEventArgs e)
 	{
-		RecipesGridView.FirstDisplayedScrollingColumnIndex =
+        System.Diagnostics.Debug.WriteLine("Scrolling!");
+
+        RecipesGridView.FirstDisplayedScrollingColumnIndex =
 			ResultsGridView.FirstDisplayedScrollingColumnIndex;
 	}
 
 	private void RecipesGridView_HorzScroll(object? sender, ScrollEventArgs e)
 	{
-		ResultsGridView.FirstDisplayedScrollingColumnIndex =
+        System.Diagnostics.Debug.WriteLine("Scrolling!");
+        ResultsGridView.FirstDisplayedScrollingColumnIndex =
 	RecipesGridView.FirstDisplayedScrollingColumnIndex;
 	}
 
@@ -121,8 +149,9 @@ public partial class FactoryView : Form
 		ShowHideRows((string)MachineComboBox.Text);
 	}
 
-	private void ResetColumns(object? sender, DataGridViewCellEventArgs e)
+	private void ResetColumns(object? sender, EventArgs e)
 	{
+		System.Diagnostics.Debug.WriteLine("Resetting Column visibility");
 		ShowHideColumns((string)MachineComboBox.Text);
 	}
 	private void ShowHideColumns(string machineType)
@@ -165,14 +194,16 @@ public partial class FactoryView : Form
 			}
 		}
 
-		this.Refresh();
+        System.Diagnostics.Debug.WriteLine("Refreshing the view");
+        this.Refresh();
 		return;
 	}
 
 	private void ShowHideRows(string machinetype)
 	{
-		//show all recipes overides hide-rows functionality by resetting tables and exiting early 
-		if (ChkBoxShowAllRecipes.Checked)
+        System.Diagnostics.Debug.WriteLine("Resetting Row visibility");
+        //show all recipes overides hide-rows functionality by resetting tables and exiting early 
+        if (ChkBoxShowAllRecipes.Checked)
 		{
 
 			for (int j = 0; j < ViewModel.RecipeTable.Rows.Count; j++)

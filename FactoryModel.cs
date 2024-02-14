@@ -8,22 +8,24 @@ using Microsoft.Extensions.DependencyInjection;
 using FactoryPlanner.Helper;
 using FactoryPlanner;
 using System.Data;
+using System.ComponentModel;
 
 namespace FactoryPlanner;
 
-public class FactoryModel
+public class FactoryModel 
 {
     public DataTable RecipeTable { get; private set; }
     public DataTable UserSelections { get; private set; }
     public DataTable ResultsTable { get; private set; }
     public int IngredientCount = 0;
 
-
     /// <summary>
     /// Constructor to populate initial state.
     /// </summary>
     public FactoryModel()
     {
+        System.Diagnostics.Debug.WriteLine("Model is instantiating");
+
         // Create the Recipe table
         ResultsTable = new DataTable();
         RecipeTable = new DataTable();
@@ -84,6 +86,7 @@ public class FactoryModel
         ResultsTable.Rows.Add(newRow);
         ResultsTable.Rows.Add(twoRow);
         ResultsTable.Rows.Add(threeRow);
+
         return;
     }
 
