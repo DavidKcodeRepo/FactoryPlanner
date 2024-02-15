@@ -71,7 +71,7 @@
         // 
         // ResultsGridView
         // 
-        ResultsGridView.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
+        ResultsGridView.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         ResultsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         ResultsGridView.Location = new Point(460, 637);
         ResultsGridView.MaximumSize = new Size(1468, 140);
@@ -84,6 +84,7 @@
         // 
         // ChkBoxShowAllRecipes
         // 
+        ChkBoxShowAllRecipes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         ChkBoxShowAllRecipes.AutoSize = true;
         ChkBoxShowAllRecipes.Location = new Point(78, 648);
         ChkBoxShowAllRecipes.Name = "ChkBoxShowAllRecipes";
@@ -92,33 +93,53 @@
         ChkBoxShowAllRecipes.Text = "Show All Recipes (Overrides other filters)";
         ChkBoxShowAllRecipes.UseVisualStyleBackColor = true;
         ChkBoxShowAllRecipes.CheckedChanged += MainForm_Load;
-        ChkBoxShowAllRecipes.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
-
         // 
         // MachineComboBox
         // 
-        MachineComboBox.DataSource = Enum.GetValues(typeof(Machines));
-
+        MachineComboBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        MachineComboBox.DataSource = new Machines[]
+{
+    Machines.All,
+    Machines.Miner,
+    Machines.AirCollector,
+    Machines.WaterExtractor,
+    Machines.BioWaterExtractor,
+    Machines.OilExtractor,
+    Machines.ResourceWellExtractor,
+    Machines.Crusher,
+    Machines.Sorter,
+    Machines.OreWasher,
+    Machines.Smelter,
+    Machines.Foundry,
+    Machines.BlastFurnace,
+    Machines.CoolerSolidifier,
+    Machines.FluidConditioner,
+    Machines.Constructor,
+    Machines.Assembler,
+    Machines.Manufacturer,
+    Machines.ChemicalReactor,
+    Machines.Weaver
+};
         MachineComboBox.FormattingEnabled = true;
+        MachineComboBox.Items.AddRange(new object[] { Machines.All, Machines.Miner, Machines.AirCollector, Machines.WaterExtractor, Machines.BioWaterExtractor, Machines.OilExtractor, Machines.ResourceWellExtractor, Machines.Crusher, Machines.Sorter, Machines.OreWasher, Machines.Smelter, Machines.Foundry, Machines.BlastFurnace, Machines.CoolerSolidifier, Machines.FluidConditioner, Machines.Constructor, Machines.Assembler, Machines.Manufacturer, Machines.ChemicalReactor, Machines.Weaver });
         MachineComboBox.Location = new Point(194, 692);
         MachineComboBox.Name = "MachineComboBox";
         MachineComboBox.Size = new Size(151, 28);
         MachineComboBox.TabIndex = 4;
-        MachineComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
         // 
         // MachineSelectLabel
         // 
+        MachineSelectLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         MachineSelectLabel.AutoSize = true;
         MachineSelectLabel.Location = new Point(78, 695);
         MachineSelectLabel.Name = "MachineSelectLabel";
         MachineSelectLabel.Size = new Size(112, 20);
         MachineSelectLabel.TabIndex = 5;
         MachineSelectLabel.Text = "Machine Select:";
-        MachineSelectLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
-
         // 
         // FiltersLabel
         // 
+        FiltersLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         FiltersLabel.AutoSize = true;
         FiltersLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
         FiltersLabel.Location = new Point(78, 606);
@@ -126,8 +147,6 @@
         FiltersLabel.Size = new Size(70, 28);
         FiltersLabel.TabIndex = 8;
         FiltersLabel.Text = "Filters";
-        FiltersLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
-
         // 
         // SelectionsLabel
         // 
@@ -151,6 +170,7 @@
         // 
         // ResultsLabel
         // 
+        ResultsLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         ResultsLabel.AutoSize = true;
         ResultsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
         ResultsLabel.Location = new Point(463, 606);
@@ -158,11 +178,10 @@
         ResultsLabel.Size = new Size(80, 28);
         ResultsLabel.TabIndex = 11;
         ResultsLabel.Text = "Results";
-        ResultsLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
-
         // 
         // SumInLabel
         // 
+        SumInLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         SumInLabel.AutoSize = true;
         SumInLabel.Location = new Point(402, 683);
         SumInLabel.Name = "SumInLabel";
@@ -170,10 +189,10 @@
         SumInLabel.TabIndex = 12;
         SumInLabel.Text = "Sum In:";
         SumInLabel.TextAlign = ContentAlignment.TopRight;
-        SumInLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
         // 
         // SumOutLabel
         // 
+        SumOutLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         SumOutLabel.AutoSize = true;
         SumOutLabel.Location = new Point(390, 715);
         SumOutLabel.Name = "SumOutLabel";
@@ -181,10 +200,10 @@
         SumOutLabel.TabIndex = 13;
         SumOutLabel.Text = "Sum Out:";
         SumOutLabel.TextAlign = ContentAlignment.TopRight;
-        SumOutLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
         // 
         // BalanceLabel
         // 
+        BalanceLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
         BalanceLabel.AutoSize = true;
         BalanceLabel.Location = new Point(393, 744);
         BalanceLabel.Name = "BalanceLabel";
@@ -192,7 +211,6 @@
         BalanceLabel.TabIndex = 14;
         BalanceLabel.Text = "Balance:";
         BalanceLabel.TextAlign = ContentAlignment.TopRight;
-        BalanceLabel.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
         // 
         // FactoryView
         // 
@@ -213,7 +231,7 @@
         Controls.Add(UserSelectGridView);
         Controls.Add(RecipesGridView);
         Name = "FactoryView";
-        Text = "Factory Planner";
+        Text = "Factory Planner 0.2";
         ((System.ComponentModel.ISupportInitialize)RecipesGridView).EndInit();
         ((System.ComponentModel.ISupportInitialize)UserSelectGridView).EndInit();
         ((System.ComponentModel.ISupportInitialize)ResultsGridView).EndInit();

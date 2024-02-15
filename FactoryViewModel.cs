@@ -21,7 +21,10 @@ public class FactoryViewModel : INotifyPropertyChanged
 
         RecipeTable = Model.RecipeTable;
         UserSelections = Model.UserSelections;
+        _userSelections = Model.UserSelections;
         ResultsTable = Model.ResultsTable;
+        _resultsTable = Model.ResultsTable;
+
         WireUpEventHandlers();
     }
 
@@ -71,22 +74,23 @@ public class FactoryViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public void FormatNonZero(object sender, DataGridViewCellFormattingEventArgs e)
+    public void FormatNonZero(object? sender, DataGridViewCellFormattingEventArgs e)
     {
-        DataGridView dataGridView = (DataGridView)sender;
-
-        if (e.Value != null && double.TryParse(e.Value.ToString(), out double result))
+        if (sender is DataGridView dataGridView && e.Value is not null)
         {
-            if (Convert.ToDouble(e.Value) > 0.1)
+            if (e.Value != null && double.TryParse(e.Value.ToString(), out double result))
             {
-                e.CellStyle.ForeColor = Color.Green;
-                e.CellStyle.BackColor = Color.LightGreen;
-            }
-            else if (Convert.ToDouble(e.Value) < -0.1)
-            {
-                e.CellStyle.ForeColor = Color.Red;
-                e.CellStyle.BackColor = Color.MistyRose;
-            }
+                if (Convert.ToDouble(e.Value) > 0.1)
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else if (Convert.ToDouble(e.Value) < -0.1)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.BackColor = Color.MistyRose;
+                }
+            } 
         }
     }
 }

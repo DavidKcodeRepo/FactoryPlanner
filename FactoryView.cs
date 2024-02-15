@@ -29,7 +29,7 @@ public partial class FactoryView : Form
         Load += MainForm_Load;
 	}
 
-	private void MainForm_Load(object sender, EventArgs e)
+	private void MainForm_Load(object? sender, EventArgs e)
 	{
         System.Diagnostics.Debug.WriteLine("Form has loaded");
 
@@ -111,7 +111,7 @@ public partial class FactoryView : Form
         ResultsGridView.DataSource = ViewModel.ResultsTable;
     }
 
-    private void MainForm_Resize(object sender, EventArgs e)
+    private void MainForm_Resize(object? sender, EventArgs e)
 	{
 		if (!IsResizing)
 		{
@@ -144,7 +144,7 @@ public partial class FactoryView : Form
 	RecipesGridView.FirstDisplayedScrollingColumnIndex;
 	}
 
-	private void ResetRows(object sender, EventArgs e)
+	private void ResetRows(object? sender, EventArgs e)
 	{
 		ShowHideRows((string)MachineComboBox.Text);
 	}
@@ -270,13 +270,13 @@ public partial class FactoryView : Form
 		return;
 	}
 
-	private void RecipesGridView_VertScroll(object sender, ScrollEventArgs e)
+	private void RecipesGridView_VertScroll(object? sender, ScrollEventArgs e)
 	{
 		UserSelectGridView.FirstDisplayedScrollingRowIndex =
 			RecipesGridView.FirstDisplayedScrollingRowIndex;
 	}
 
-	private void UserSelectGridView_VertScroll(object sender, ScrollEventArgs e)
+	private void UserSelectGridView_VertScroll(object? sender, ScrollEventArgs e)
 	{
 		RecipesGridView.FirstDisplayedScrollingRowIndex =
 			UserSelectGridView.FirstDisplayedScrollingRowIndex;
