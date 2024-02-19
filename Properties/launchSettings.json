@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FactoryPlanner": {
+      "commandName": "Project"
+    },
+    "Publish": {
+      "commandName": "Project"
+    }
+  }
+}
