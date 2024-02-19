@@ -33,12 +33,33 @@ FEATURES
 	do I 
 	
 MANAGEMENT
-	Put this code in github
+	Put this code in github //
 
 CODE
-	Implement proper MVVM separation of concerns
+	Implement proper MVVM separation of concerns // 
 	
 
 LEARNINGS
 	
+
+bugs:
+
+don't want to change col
+why is water column hidden
+out of sync rows? how does this happen?
+
+why does all selection force loops on updating userSelections
+crash on zero results + scroll (add a guard to the scroller?)
+
+features:
+
+can we parse math expressions
+round result to 4th decimal place if not integer?
+
+show inputs of selected recipe
+
+save and load factories?
+change recipe list?
+
+if input highlighted view recipes
  */
