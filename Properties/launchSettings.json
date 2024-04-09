@@ -1,7 +1,10 @@
 {
   "profiles": {
     "FactoryPlanner": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "nativeDebugging": true,
+      "jsWebView2Debugging": true,
+      "sqlDebugging": true
     },
     "Publish": {
       "commandName": "Project"

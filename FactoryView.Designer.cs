@@ -92,7 +92,6 @@
         ChkBoxShowAllRecipes.TabIndex = 3;
         ChkBoxShowAllRecipes.Text = "Show All Recipes (Overrides other filters)";
         ChkBoxShowAllRecipes.UseVisualStyleBackColor = true;
-        ChkBoxShowAllRecipes.CheckedChanged += MainForm_Load;
         // 
         // MachineComboBox
         // 

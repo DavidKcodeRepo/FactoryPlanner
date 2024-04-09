@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FactoryPlanner.Helper;
-using FactoryPlanner;
-using System.Data;
+﻿using System.Data;
 using System.ComponentModel;
 
 namespace FactoryPlanner;
 
+/// <summary>
+/// Viewmodel for exposing model to the view. View to view model is updated via bindings.
+/// </summary>
 public class FactoryViewModel : INotifyPropertyChanged
 {
     public FactoryViewModel()
@@ -30,8 +25,10 @@ public class FactoryViewModel : INotifyPropertyChanged
 
     public FactoryModel Model { get; set; }
 
+    // this information is constant throughout runtime
     public DataTable RecipeTable { get; set; }
-
+    
+    // private copy used to check for updates
     private DataTable _userSelections;
     public DataTable UserSelections
     {
@@ -43,6 +40,7 @@ public class FactoryViewModel : INotifyPropertyChanged
         }
     }
 
+    // private copy used to check for updates
     private DataTable _resultsTable;
     public DataTable ResultsTable
     {

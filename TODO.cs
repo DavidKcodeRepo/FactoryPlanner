@@ -23,43 +23,30 @@ BUGS
 		-> in non zero ingredients from recipe table
 
 	/ results and recipes dataframe should scroll lock - FIXED
-	/ clicking on either scroll bar crashes the app - FIXED
+	/ clicking on either scroll bar crashes th	e app - FIXED
+	why is water column hidden - FIXED
+	out of sync rows? how does this happen?
+
+		why does all selection force loops on updating userSelections
+		crash on zero results + scroll (add a guard to the scroller?)
 
 FEATURES
 	option to calculate lowest common multiple?
 	option to calc exact balance and over / under to next machine?
-	override "near as damn it to zero, to zero"
+	override "near as damn it to zero, to zero" / FIXED WITH CONDITIONAL FORMATTING
 	add injection pane? (i.e. zero input recipes)
 	do I 
-	
-MANAGEMENT
-	Put this code in github //
+	can we parse math expressions
+	round result to 4th decimal place if not integer?
 
-CODE
-	Implement proper MVVM separation of concerns // 
-	
+	show inputs of selected recipe
 
-LEARNINGS
-	
-
-bugs:
-
-don't want to change col
-why is water column hidden
-out of sync rows? how does this happen?
-
-why does all selection force loops on updating userSelections
-crash on zero results + scroll (add a guard to the scroller?)
-
-features:
-
-can we parse math expressions
-round result to 4th decimal place if not integer?
-
-show inputs of selected recipe
-
-save and load factories?
+	save and load factories?
 change recipe list?
 
-if input highlighted view recipes
+LEARNINGS
+	bind view model to view via bindings. 
+	VM implemented on view model to trigger refresh
+	user.resize is a continuous input and must be supressed until user is done.
+	basic optimisation using continue; vastly improved performance in calculation loop by ~ x250 runtime
  */
